@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #main{
+      margin: 20px;
+      width: 700px;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <script src="../node_modules/echarts/dist/echarts.js"></script>
+  <script>
+    const mainDom=document.querySelector('#main');
+    const chart=echarts.init(mainDom);
+    const option={
+      legend:{
+       data:['学习人数','就业人数']
+      },
+      tooltip:{},
+      xAxis:{
+        data:['html','css','js']
+      },
+      yAxis:[
+        {min:0,max:50},
+        {}
+      ],
+      series:[
+        {
+          name:'学习人数',
+          type:'bar',
+          data:[30,20,40],
+          yAxisIndex:0,
+
+        },
+        {
+          name:'就业人数',
+          type:'bar',
+          data:[40,30,50],
+          yAxisIndex:1,
+        }
+      ]
+    }
+    chart.setOption(option);
+  </script>
+</body>
+</html>

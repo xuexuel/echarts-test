@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,38 +23,36 @@
     const mainDom = document.querySelector('#main');
     const chart = echarts.init(mainDom);
     const option = {
-      visualMap: {
-        min: 20,
-        max: 50,
-        inRange: {
-          colorLightness: [0.2, 0.8]
+      xAxis: {
+        name: '前端语言',
+        data: ['html', 'css', 'js', 'canvas'],
+        boundaryGap: 0
+      },
+      yAxis: {
+        name: '人数',
+        axisLabel: {
+          margin: 30,
         }
+        // splitNumber:10,
+        // interval:'5'
+        // minInterval:20,
+        // maxInterval:5,
       },
       series: {
-        type: 'pie',
-        data: [{
-            name: 'html',
-            value: 30
-          },
-          {
-            name: 'css',
-            value: 20
-          },
-          {
-            name: 'js',
-            value: 40
-          },
-          {
-            name: 'canvas',
-            value: 50
-          },
-
-        ],
-        roseType: 'radius',
-        radius: ['40%', '70%'],
+        type: 'line',
+        data: [30, 20, 40, 100],
+        smooth: true,
         itemStyle: {
           color: '#00acec',
-        }
+        },
+        areaStyle: {
+          color: '#00acec',
+          opacity: 0.3,
+        },
+        symbolSize: 20,
+        // symbol:'pin',
+        // 可以自定义图片
+        // symbolSize:'image://./images/bs.png',
       }
     }
     chart.setOption(option);

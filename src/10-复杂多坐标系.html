@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #main{
+      margin: 20px;
+      width: 700px;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <script src="../node_modules/echarts/dist/echarts.js"></script>
+  <script>
+    const mainDom=document.querySelector('#main');
+    const chart=echarts.init(mainDom);
+    const data1=[15,12,16,11,16,20];
+    const data2=[-150,120,160,-110,160,200];
+    const rowNum=6;
+
+    // 取数据最值
+    let max1=Math.max(...data1);
+    let max2=Math.max(...data2);
+    let min1=Math.min(...data1);
+    let min2=Math.min(...data2);
+
+    const rat1=min1/max1;
+    const rat2=min2/max2;
+    const ratState=rat1>rat2;
+    if(ratState){
+      min1=rat2*max1;
+    } else {
+      min2=rat1*max2;
+    }
+
+    let inter1=Math.ceil((max1-min1)/rowNum);
+    let inter2=Math.ceil((max2-min2)/rowNum);
+
+    // 对极值微调
+    min1=Math.floor(min1/inter1)*inter1;
+    max1=Math.floor(max1/inter1)*inter1;
+    min2=Math.floor(min2/inter2)*inter2;
+    max2=Math.floor(max2/inter2)*inter2;
+
+    const option={
+      tooltip:{},
+      legend:{
+       data:['销售量','盈利额']
+      },
+      xAxis:{
+        data:['衬衫','羊毛衫','雪纺衫',"裤子","高跟鞋","袜子"]
+      },
+      yAxis:[
+        {
+          type:'value',
+          scale:true,
+          name:'销售量',
+          min:min1,
+          max:max1,
+          interval:inter1
+        },
+        {
+          type:'value',
+          scale:true,
+          name:'盈利额',
+          min:min2,
+          max:max2,
+          interval:inter2
+        },
+      ],
+      series:[
+        {
+          name:'销售量',
+          type:'bar',
+          data:data1,
+          yAxisIndex:0,
+
+        },
+        {
+          name:'盈利额',
+          type:'bar',
+          data:data2,
+          yAxisIndex:1,
+        }
+      ]
+    }
+    chart.setOption(option);
+  </script>
+</body>
+</html>

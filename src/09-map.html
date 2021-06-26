@@ -18,9 +18,13 @@
   <script>
     const mainDom=document.querySelector('#main');
     const chart=echarts.init(mainDom);
+    chart.showLoading('default',{
+      text:'数据加载中'
+    });
     fetch('../static/map-china.json')
     .then(res=> res.json())
     .then(data=>{
+      chart.hideLoading();
       echarts.registerMap('china',data);
       const option={
         title:{
