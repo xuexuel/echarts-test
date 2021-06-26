@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #main{
+      width: 700px;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <script src="../node_modules/echarts/dist/echarts.js"></script>
+  <script>
+    const mainDom=document.querySelector('#main');
+    const chart=echarts.init(mainDom);
+    const source=[
+      [2,1,5],
+      [4,2,10],
+      [6,3,15],
+      [8,4,20],
+      [10,5,25],
+      [12,6,30],
+      [14,7,35],
+      [16,8,40],
+      [18,9,45],
+    ]
+    const option={
+      dataset:{source},
+      xAxis:{
+        type:'value',
+        min:'dataMin',
+        max:'dataMax',
+      },
+      yAxis:{
+        type:'value',
+        min:'dataMin',
+        max:'dataMax',
+      },
+      dataZoom:{
+        type:'inside',
+        // start:50,
+        // end:80
+      },
+      series:[
+        {
+          type:'scatter',
+          symbolSize:function(param){
+            return param[2];
+          }
+        }
+      ]
+    }
+    chart.setOption(option);
+    
+   
+
+  </script>
+</body>
+</html>

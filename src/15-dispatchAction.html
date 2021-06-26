@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #main {
+      margin: 20px;
+      width: 700px;
+      height: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main"></div>
+  <script src="../node_modules/echarts/dist/echarts.js"></script>
+  <script>
+    const mainDom = document.querySelector('#main');
+    const chart = echarts.init(mainDom);
+    const option = {
+      visualMap: {
+        min: 20,
+        max: 50,
+        inRange: {
+          colorLightness: [0.2, 0.8]
+        }
+      },
+      series: {
+        type: 'pie',
+        data: [{
+            name: 'html',
+            value: 30
+          },
+          {
+            name: 'css',
+            value: 20
+          },
+          {
+            name: 'js',
+            value: 40
+          },
+          {
+            name: 'canvas',
+            value: 50
+          },
+
+        ],
+        roseType: 'radius',
+        radius: ['40%', '70%'],
+        itemStyle: {
+          color: '#00acec',
+        }
+      }
+    }
+    chart.setOption(option);
+    chart.dispatchAction({
+      type:'highlight',
+      seriesIndex:0,
+      dataIndex:0
+    })
+    chart.dispatchAction({
+      type:'showTip',
+      seriesIndex:0,
+      dataIndex:0
+    })
+    // chart.dispatchAction({
+    //   type:'downplay',
+    //   seriesIndex:0,
+    //   dataIndex:0
+    // })
+    // chart.dispatchAction({
+    //   type:'hideTip',
+    //   seriesIndex:0,
+    //   dataIndex:0
+    // })
+  </script>
+</body>
+
+</html>

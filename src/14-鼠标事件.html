@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #main{
+      width: 700px;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <script src="../node_modules/echarts/dist/echarts.js"></script>
+  <script>
+    const mainDom=document.querySelector('#main');
+    const chart=echarts.init(mainDom);
+    const source=[
+      ['大前端','学习人数','就业人数'],
+      ['html',30,40],
+      ['css',20,30],
+      ['js',40,50],
+    ]
+    // 也支持这种格式，方便处理后端数据
+    // const source=[
+    //   {'大前端':'html','学习人数':30,'就业人数':40},
+    //   {'大前端':'css','学习人数':20,'就业人数':30},
+    //   {'大前端':'js','学习人数':40,'就业人数':50},
+    // ]
+    const option={
+      dataset:{source},
+      xAxis:{
+        type:'category',
+      },
+      yAxis:{
+        type:'value'
+      },
+      series:[
+        // seriesLayoutBy控制横坐标显示什么
+        {type:'bar'},
+        {type:'bar'},
+      ]
+    }
+    chart.setOption(option);
+    chart.on('click',function(opt){
+      console.log(opt);
+    })
+   
+
+  </script>
+</body>
+</html>
