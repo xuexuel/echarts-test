@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #main{
+      width: 100%;
+      height: 1500px;
+    }
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <script src="../node_modules/echarts/dist/echarts.js"></script>
+  <script>
+    const mainDom=document.querySelector('#main');
+    const chart=echarts.init(mainDom);
+    fetch('../static/map-china.json')
+    .then(res=> res.json())
+    .then(data=>{
+      echarts.registerMap('china',data);
+      const option={
+        title:{
+          text:'中国地图',
+          left:'center',
+          textStyle:{
+            color:'rgba(255,255,255,0.8)'
+          },
+          top:24
+        },
+        geo:{
+          map:'china',
+          roam:true,
+          zoom:1,
+          itemStyle:{
+            areaColor:'#004981',
+            boderColor:'#029fd4'
+          },
+          emphasis:{
+            itemStyle:{
+              color:'#029fd4'
+            },
+            label:{
+              color:'#fff'
+            }
+          }
+        },
+        series:{
+          name:'pm2.5',
+          type:'scatter',
+          coordinateSystem:'geo',
+          data:[
+            {
+              name:'海门',
+              value:[121.15,31.89,9]
+            },
+            {
+              name:'鄂尔多斯',
+              value:[109.781327,39.608266,12]
+            },
+            {
+              name:'招远',
+              value:[120.38,37.35,18]
+            }
+          ],
+          symbolSize:function(val){
+            return val[2];
+          }
+
+        }
+      }
+      chart.setOption(option);
+    })
+    
+   
+
+  </script>
+</body>
+</html>

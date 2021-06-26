@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #main{
+      margin: 20px;
+      width: 700px;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <script src="../node_modules/echarts/dist/echarts.js"></script>
+  <script>
+    const mainDom=document.querySelector('#main');
+    const chart=echarts.init(mainDom);
+    const option={
+      xAxis:{
+        data:['周一','周二','周三','周四']
+      },
+      yAxis:{
+      },
+      series:{
+        type:'candlestick',
+        data:[
+          [20,30,10,40],
+          [30,20,10,40],
+          [30,20,0,40],
+          [30,20,0,50]
+        ]
+        
+      }
+    }
+    chart.setOption(option);
+  </script>
+</body>
+</html>

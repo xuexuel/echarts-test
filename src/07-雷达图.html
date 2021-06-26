@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #main{
+      margin: 20px;
+      width: 700px;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <script src="../node_modules/echarts/dist/echarts.js"></script>
+  <script>
+    const mainDom=document.querySelector('#main');
+    const chart=echarts.init(mainDom);
+    const data=[
+      {
+        name:'关羽',
+        value:[80,98,80,70,70]
+      },
+      {
+        name:'鲁班',
+        value:[85,70,75,95,80]
+      }
+    ]
+    const option={
+      title:{
+        text:'英雄实力对比',
+      },
+      legend:{
+
+      },
+      radar:{
+        indicator:[
+          {name:'生命',min:0,max:100,color:'#00acec'},
+          {name:'攻击',min:0,max:100,color:'red'},
+          {name:'暴击',min:0,max:100,color:'orange'},
+          {name:'防御',min:0,max:100,color:'#333'},
+          {name:'速度',min:0,max:100,color:'blue'},
+        ],
+        shape:'circle'
+      },
+      series:{
+        type:'radar',
+        data
+        
+      }
+    }
+    chart.setOption(option);
+  </script>
+</body>
+</html>

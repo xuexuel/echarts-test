@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #main{
+      margin: 20px;
+      width: 700px;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <script src="../node_modules/echarts/dist/echarts.js"></script>
+  <script>
+    const mainDom=document.querySelector('#main');
+    const chart=echarts.init(mainDom);
+    const option={
+      title:{
+        text:'主标题',
+        subtext:'副标题',
+        left:'center',
+        textStyle:{
+          color:'maroon',
+          fontSize:24,
+        },
+        subtextStyle:{
+          color:'orange',
+          fontSize:18,
+        },
+        show:true,
+
+      },
+      // 提示框
+      tooltip:{
+        // trigger:'item',
+        trigger:'axis',
+
+      },
+      // 绘图区，
+      grid:{
+        top:90,
+      },
+      // 图例
+      legend:{
+        left:'left'
+
+      },
+      // 工具栏
+      toolbox:{
+        feature:{
+          saveAsImage:{
+            type:'jpeg'
+          },
+          dataView:{},
+          restore:{},
+          // 数据区域缩放
+          dataZoom:{},
+          magicType:{
+            type:['line','bar','stack']
+          }
+        }
+      },
+
+      xAxis:{
+        name:'前端语言',
+        data:['html','css','js']
+      },
+      yAxis:{
+        name:'人数',
+        // splitNumber:10,
+        // interval:'5'
+        // minInterval:20,
+        // maxInterval:5,
+      },
+      series:[{
+        name:'学习人数',
+        type:'bar',
+        data:[30,20,40],
+        markPoint:{
+          data:[
+            {type:'max'},
+            {type:'min'},
+            {
+              value:'kkb',
+              coord:[0,30],
+              itemStyle:{
+              color:'maroon',
+              }
+            }
+          ],
+          itemStyle:{
+            color:'#00acec',
+          }
+        }
+      },{
+      name:'就业人数',
+      type:'bar',
+      data:[40,30,50],
+      markLine:{
+        data:[
+          {type:'average'},
+          {type:'max'},
+          {type:'min'},
+          [
+            {coord:[0,0]},
+            {coord:[2,50]},
+          ]
+        ],
+        itemStyle:{
+          color:'#00acec',
+        }
+      }
+      }]
+    }
+    chart.setOption(option);
+  </script>
+</body>
+</html>
