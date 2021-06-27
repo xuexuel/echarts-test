@@ -1,0 +1,106 @@
+@font-face {
+  font-family: electronicFont;
+  src: url(../../font/DS-Digital.ttf);
+}
+body{
+  width: 1920px;
+  height:1080px;
+  margin: 0 auto;
+  background-image: url("../../images/bk.jpeg");
+}
+#header{
+  height: 99px;
+  font-size: 42px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  /* background-image: url("../../images/head_bg.png"); */
+}
+#cont{
+  height: 981px;
+  display: flex;
+}
+.cont-edge{
+  width: 556px;
+}
+.cont-edge:first-child{
+  padding-left: 14px;
+}
+.cont-edge:last-child{
+  padding-right: 14px;
+}
+.box{
+  height: 290px;
+  padding-top: 10px;
+  width: 556px;
+  margin-bottom: 15px;
+  border: 1px solid #666;
+  box-shadow: 4px 4px 4px 0px #666;
+  border-radius: 15px;
+}
+
+.cont-center{
+  width: 728px;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 728px;
+}
+.centerImg{
+  border-radius: 100%;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  overflow: hidden;
+  
+}
+.img1{
+  animation: img1 20s linear infinite;
+  opacity: 0.7;
+}
+@keyframes img1{
+  0%{transform: rotate(0deg);}
+  100%{transform: rotate(360deg);}
+}
+.img2{
+  animation: img2 5s linear infinite;
+  opacity: 0.5;
+}
+@keyframes img2{
+  0%{transform: rotate(360deg);}
+  100%{transform: rotate(0deg);}
+}
+#chartC{
+  /* position: absolute; */
+  width:728px;
+  height: 800px;
+}
+.center-row{
+  display: flex;
+}
+.center-row>div{
+  flex:1;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+}
+.center-row:first-child{
+  height: 75px;
+  /* background-image: url("../../images/center_tit_bg.png"); */
+}
+.center-num{
+  line-height: 75px;
+  color: #ffeb7b;
+  font-size: 64px;
+  font-family: electronicFont;
+}
+.center-text{
+  font-size: 20px;
+  color: rgba(255,255,255,0.75);
+  margin-top: 9px;
+}
+.anchorBL{
+  display: none;
+}
